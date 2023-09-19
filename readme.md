@@ -11,6 +11,8 @@ Enhance user experience by adding a "Back to Top" button that appears when users
 The <b>Scrollxy</b> Plugin simplifies the process of adding these dynamic features to your website, making it an ideal solution for improving data presentation and user interaction.
 
 ## HOW TO USE
+
+### Demo  <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/souravmsh/scrollxy/main/scrollxy.html">Scrollxy</a> 
     
 ### Sample table 
     <table class="scrollxy">
