@@ -42,7 +42,7 @@ The <b>Scrollxy</b> Plugin simplifies the process of adding these dynamic featur
     <script>
         Scrollxy.scrollxy({
             table: {
-                selector: "table.scrollable",
+                selector: ".scrollxy",
                 bgColor: "#f0f0f0",
                 leftIcon: "⇦",
                 rightIcon: "⇨",
