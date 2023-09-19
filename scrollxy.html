@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Scrollable Table Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Your custom CSS styles here */
+    </style>
+</head>
+
+<body>
+    <div class="container mt-3">
+        <h2>Scrollxy - Ultimate Scrolling Solution</h2>
+        <p>scrollable table and back to top button</p>
+        <div class="table-responsive">
+        <table class="scrolly">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Designation</th>
+                    <th>Department</th>
+                    <th>Company</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Created At</th>
+                    <th>Created By</th>
+                    <th>Updated At</th>
+                    <th>Updated By</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499391</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 15, 2023 1:00 PM</th>
+                    <th>Administrator</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499392</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 20, 2023 10:00 AM</th>
+                    <th>Alex</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499393</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 15, 2023 1:00 PM</th>
+                    <th>Administrator</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499391</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 15, 2023 1:00 PM</th>
+                    <th>Administrator</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499392</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 20, 2023 10:00 AM</th>
+                    <th>Alex</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499393</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 15, 2023 1:00 PM</th>
+                    <th>Administrator</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499391</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 15, 2023 1:00 PM</th>
+                    <th>Administrator</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499392</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 20, 2023 10:00 AM</th>
+                    <th>Alex</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499393</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 15, 2023 1:00 PM</th>
+                    <th>Administrator</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+                <tr>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499391</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 15, 2023 1:00 PM</th>
+                    <th>Administrator</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+                <tr>
+                    <td>Mary</td>
+                    <td>Moe</td>
+                    <td>mary@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499392</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 20, 2023 10:00 AM</th>
+                    <th>Alex</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+                <tr>
+                    <td>July</td>
+                    <td>Dooley</td>
+                    <td>july@example.com</td>
+                    <th>Ny-1000, USA</th>
+                    <th>Executive</th>
+                    <th>HR</th>
+                    <th>Apple Inc</th>
+                    <th>+019388499393</th>
+                    <th>Active</th>
+                    <th>Mar 15, 2023 12:00 PM</th>
+                    <th>Administrator</th>
+                    <th>Mar 15, 2023 1:00 PM</th>
+                    <th>Administrator</th>
+                    <th><a href="#" class="btn btn-info">Edit</a></th>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    <script src="scrollxy.min.js"></script>
+    <script> 
+        // Initialize the scrollxy with custom options
+        Scrollxy.scroll({
+            table: {
+                selector: "table.scrolly",
+                bgColor: "#e3e3e3de",
+                leftIcon: "⇦",
+                rightIcon: "⇨",
+                scrollAmount: 250,
+            },
+            backToTop: {
+                bgColor: "#333",
+                color: "white",
+                icon: "↑",
+            }
+        });
+    </script>
+</body>
+
+</html>
