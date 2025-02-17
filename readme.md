@@ -12,7 +12,7 @@ The <b>Scrollxy</b> Plugin simplifies the process of adding these dynamic featur
 
 ## HOW TO USE
 
-### Demo  <a href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/souravmsh/scrollxy/main/scrollxy.html">Scrollxy</a> 
+### Demo  <a href="https://souravmsh.github.io/scrollxy/">Scrollxy</a> 
     
 ### Sample table 
     <table class="scrollxy">
