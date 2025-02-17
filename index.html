@@ -15,8 +15,8 @@
     <div class="container mt-3">
         <h2>Scrollxy - Ultimate Scrolling Solution</h2>
         <p>scrollable table and back to top button</p>
-        <div class="table-responsive" style="max-width:900px">
-        <table class="scrolly">
+        <div class="table-responsive">
+        <table class="scrollxy table table-striped">
             <thead>
                 <tr>
                     <th>Firstname</th>
@@ -238,16 +238,19 @@
         // Initialize the scrollxy with custom options
         Scrollxy.scroll({
             table: {
-                selector: "table.scrolly",
-                bgColor: "#e3e3e3de",
-                leftIcon: "⇦",
-                rightIcon: "⇨",
-                scrollAmount: 250,
+                selector: ".scrollxy",
+                bgColor: "#e3e3e3",
+                scrollColor: "#888", // Default scrollbar color
+                leftIcon: "\u21E0", // Mac-style arrow
+                rightIcon: "\u21E2", // Mac-style arrow
+                scrollAmount: 300,
+                scrollSize: "8px", // Default scrollbar size
+                navButtonSize: "75px" // Default nav button size
             },
             backToTop: {
-                bgColor: "#333",
+                bgColor: "#888",
                 color: "white",
-                icon: "↑",
+                icon: "\u21E1", // Mac-style up arrow
             }
         });
     </script>

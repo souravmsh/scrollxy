@@ -20,22 +20,25 @@ The <b>Scrollxy</b> Plugin simplifies the process of adding these dynamic featur
     </table>
 
 ### Include plugin 
-    <script src="scrollxy.min.js"></script>
+    <script src="scrollxy.js"></script>
 
 ### Initialize the Scrollxy with custom options
     <script>
         Scrollxy.scroll({
             table: {
                 selector: ".scrollxy",
-                bgColor: "#f0f0f0",
-                leftIcon: "⇦",
-                rightIcon: "⇨",
-                scrollAmount: 250,
+                bgColor: "#e3e3e3",
+                scrollColor: "#888", // Default scrollbar color
+                leftIcon: "\u21E0", // Mac-style arrow
+                rightIcon: "\u21E2", // Mac-style arrow
+                scrollAmount: 300,
+                scrollSize: "8px", // Default scrollbar size
+                navButtonSize: "75px" // Default nav button size
             },
             backToTop: {
-                bgColor: "#333",
+                bgColor: "#888",
                 color: "white",
-                icon: "↑",
+                icon: "\u21E1", // Mac-style up arrow
             }
         });
     </script>

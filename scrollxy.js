@@ -1,191 +1,163 @@
-/*! ScrollXY v1.0.0 http://codekernel.net | https://raw.githubusercontent.com/souravmsh/scrollxy/main/scrollxy.min.js */
-
-// Create a self-invoking function to define the plugin module
 const Scrollxy = (function () {
-    // Define default options for the plugin
     const defaultOptions = {
         table: {
             selector: "table",
-            bgColor: "#e3e3e3de",
-            leftIcon: "⇦",
-            rightIcon: "⇨",
-            scrollAmount: 250,
+            bgColor: "#e3e3e3",
+            scrollColor: "#888", // Default scrollbar color
+            leftIcon: "\u21E0", // Mac-style arrow
+            rightIcon: "\u21E2", // Mac-style arrow
+            scrollAmount: 300,
+            hideOffset: 20, // Hide navRight a few pixels before the end
+            scrollSize: "8px", // Default scrollbar size
+            navButtonSize: "75px" // Default nav button size
         },
         backToTop: {
-            bgColor: "#333",
+            bgColor: "#888",
             color: "white",
-            icon: "↑",
+            icon: "\u21E1", // Mac-style up arrow
         }
     };
 
-    // Main scroll function
     function scroll(userConfig) {
-        // Merge userConfig with defaultOptions
         const config = mergeOptions(defaultOptions, userConfig);
 
         document.addEventListener("DOMContentLoaded", function () {
-            // Make tables scrollable
             if (config.table) {
-                const options = config.table;
-                const tables = document.querySelectorAll(options.selector);
-
-                tables.forEach(function (table) {
-                    makeTableScrollable(table, options);
+                document.querySelectorAll(config.table.selector).forEach(table => {
+                    makeTableScrollable(table, config.table);
                 });
             }
 
-            // Add a back-to-top button
-            if (config.backToTop) {
+            if (config.backToTop && userConfig.backToTop) {
                 addBackToTopButton(config.backToTop);
             }
         });
-
-        // Function to merge userConfig with defaultOptions
-        function mergeOptions(defaultOptions, userConfig) {
-            const merged = { ...defaultOptions };
-
-            if (userConfig.table) {
-                merged.table = { ...defaultOptions.table, ...userConfig.table };
-            }
-
-            if (userConfig.backToTop) {
-                merged.backToTop = { ...defaultOptions.backToTop, ...userConfig.backToTop };
-            }
-
-            return merged;
-        }
-
-        // Function to make a table scrollable
-        function makeTableScrollable(table, options) {
-            var wrapper = document.createElement("div");
-            wrapper.style.position = "relative";
-
-            var navLeft = document.createElement("div");
-            navLeft.className = "scrollxy-navigation-left";
-            navLeft.style.display = "none";
-            navLeft.style.position = "absolute";
-            navLeft.style.width = "60px";
-            navLeft.style.height = "100%";
-            navLeft.style.cursor = "pointer";
-            navLeft.style.backgroundColor = options.bgColor;
-            var navLeftArrow = document.createElement("div");
-            navLeftArrow.style.position = "absolute";
-            navLeftArrow.style.top = "50%";
-            navLeftArrow.style.textAlign = "center";
-            navLeftArrow.style.width = "100%";
-            navLeftArrow.style.height = "32px";
-            navLeftArrow.innerHTML = options.leftIcon;
-            navLeft.appendChild(navLeftArrow);
-
-            var navRight = document.createElement("div");
-            navRight.className = "scrollxy-navigation-right";
-            navRight.style.display = "block";
-            navRight.style.position = "absolute";
-            navRight.style.width = "60px";
-            navRight.style.height = "100%";
-            navRight.style.cursor = "pointer";
-            navRight.style.backgroundColor = options.bgColor;
-            navRight.style.right = "0";
-            var navRightArrow = document.createElement("div");
-            navRightArrow.style.position = "absolute";
-            navRightArrow.style.top = "50%";
-            navRightArrow.style.marginTop = "-10px";
-            navRightArrow.style.width = "100%";
-            navRightArrow.style.height = "32px";
-            navRightArrow.style.textAlign = "center";
-            navRightArrow.innerHTML = options.rightIcon;
-            navRight.appendChild(navRightArrow);
-
-            var container = document.createElement("div");
-            container.style.overflow = "auto";
-            var clonedTable = table.cloneNode(true);
-            container.appendChild(clonedTable);
-
-            wrapper.appendChild(navLeft);
-            wrapper.appendChild(navRight);
-            wrapper.appendChild(container);
-
-            table.parentNode.replaceChild(wrapper, table);
-
-            function toggleNav() {
-                var offset = container.scrollLeft;
-                if (container.clientWidth < clonedTable.offsetWidth) {
-                    if (offset > 0) {
-                        navLeft.style.display = "block";
-                    } else {
-                        navLeft.style.display = "none";
-                    }
-                    if (clonedTable.offsetWidth - container.clientWidth > offset) {
-                        navRight.style.display = "block";
-                    } else {
-                        navRight.style.display = "none";
-                    }
-                } else {
-                    navLeft.style.display = "none";
-                    navRight.style.display = "none";
-                }
-            }
-
-            function clickToScroll(event) {
-                var displacement = container.scrollLeft + (this.classList.contains("scrollxy-navigation-left") ? -options.scrollAmount : options.scrollAmount);
-                container.scrollTo({
-                    left: displacement,
-                    behavior: "smooth"
-                });
-                toggleNav();
-            }
-
-            navLeft.addEventListener("click", clickToScroll);
-            navRight.addEventListener("click", clickToScroll);
-            container.addEventListener("scroll", toggleNav);
-
-            toggleNav();
-        }
-
-        // Function to add a back-to-top button
-        function addBackToTopButton(options) {
-            var options = config.backToTop;
-            // Create the back-to-top button
-            var backToTopButton = document.createElement('button');
-            backToTopButton.textContent = options.icon ? options.icon : '⇡';
-            backToTopButton.id = 'backToTopButton';
-            backToTopButton.style.position = 'fixed';
-            backToTopButton.style.bottom = '75px';
-            backToTopButton.style.right = '25px';
-            backToTopButton.style.zIndex = '9999';
-            backToTopButton.style.color = options.color;
-            backToTopButton.style.padding = '7px 14px';
-            backToTopButton.style.background = options.bgColor;
-            backToTopButton.style.border = 'none';
-            backToTopButton.style.borderRadius = '10px';
-            backToTopButton.style.opacity = '0.4';
-            backToTopButton.style.cursor = 'pointer';
-            backToTopButton.style.display = 'none';
-
-            // Append the button to the body
-            document.body.appendChild(backToTopButton);
-
-            // Show or hide the button based on scroll position
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 200) {
-                    backToTopButton.style.display = 'block';
-                } else {
-                    backToTopButton.style.display = 'none';
-                }
-            });
-
-            // Scroll to the top when the button is clicked
-            backToTopButton.addEventListener('click', function () {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        }
     }
 
-    // Return the scrollxy function as the public API of the plugin
-    return {
-        scroll
-    };
+    function mergeOptions(defaultOptions, userConfig) {
+        return {
+            table: { ...defaultOptions.table, ...userConfig.table },
+            backToTop: { ...defaultOptions.backToTop, ...userConfig.backToTop }
+        };
+    }
+
+    function makeTableScrollable(table, options) {
+        let wrapper = document.createElement("div");
+        wrapper.style.position = "relative";
+        wrapper.style.overflow = "hidden";
+
+        let container = document.createElement("div");
+        container.style.overflowX = "auto";
+        container.style.scrollBehavior = "smooth";
+        container.style.position = "relative";
+        container.appendChild(table.cloneNode(true));
+
+        // Custom scrollbar styling from input options
+        container.style.scrollbarWidth = "thin";
+        container.style.scrollbarColor = `${options.scrollColor} #f1f1f1`;
+
+        let style = document.createElement("style");
+        style.innerHTML = `
+            div::-webkit-scrollbar {
+                height: ${options.scrollSize};
+            }
+            div::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 10px;
+            }
+            div::-webkit-scrollbar-thumb {
+                background: ${options.scrollColor};
+                border-radius: 10px;
+            }
+            div::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+        `;
+        document.head.appendChild(style);
+
+        let navLeft = createNavButton("scrollxy-left", options.leftIcon, options.bgColor, options.navButtonSize);
+        let navRight = createNavButton("scrollxy-right", options.rightIcon, options.bgColor, options.navButtonSize);
+
+        navLeft.addEventListener("click", () => scrollTable(container, -options.scrollAmount));
+        navRight.addEventListener("click", () => scrollTable(container, options.scrollAmount));
+        container.addEventListener("scroll", () => toggleNavVisibility(container, navLeft, navRight, options.hideOffset, options.navButtonSize));
+
+        wrapper.appendChild(navLeft);
+        wrapper.appendChild(navRight);
+        wrapper.appendChild(container);
+        table.parentNode.replaceChild(wrapper, table);
+
+        toggleNavVisibility(container, navLeft, navRight, options.hideOffset, options.navButtonSize);
+    }
+
+    function createNavButton(className, icon, bgColor, buttonSize) {
+        let nav = document.createElement("div");
+        nav.className = className;
+        nav.style.position = "absolute";
+        nav.style.top = "0";
+        nav.style.width = buttonSize;
+        nav.style.height = "100%";
+        nav.style.display = "flex";
+        nav.style.alignItems = "center";
+        nav.style.justifyContent = "center";
+        nav.style.backgroundColor = bgColor;
+        nav.style.cursor = "pointer";
+        nav.style.zIndex = "10";
+        nav.style.opacity = "0.8";
+        nav.style.transition = "opacity 0.3s ease-in-out, transform 0.3s ease-in-out";
+        nav.style.transform = "translateX(0)";
+        nav.style.borderRadius = "5px";
+        nav.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.2)";
+        nav.innerHTML = icon;
+
+        // Hover effects
+        nav.addEventListener("mouseenter", () => {
+            nav.style.opacity = "1";
+            nav.style.transform = "scale(1.1)";
+        });
+
+        nav.addEventListener("mouseleave", () => {
+            nav.style.opacity = "0.8";
+            nav.style.transform = "scale(1)";
+        });
+
+        return nav;
+    }
+
+    function scrollTable(container, amount) {
+        container.scrollBy({ left: amount, behavior: "smooth" });
+    }
+
+    function toggleNavVisibility(container, navLeft, navRight, hideOffset, buttonSize) {
+        navLeft.style.left = container.scrollLeft > 0 ? "0" : `-${parseInt(buttonSize) + 3}px`;
+        navRight.style.right = (container.scrollLeft + container.clientWidth < container.scrollWidth - hideOffset) ? "0" : `-${parseInt(buttonSize) + 3}px`;
+    }
+
+    function addBackToTopButton(options) {
+        let btn = document.createElement("button");
+        btn.id = "backToTopButton";
+        btn.textContent = options.icon;
+        btn.style.position = "fixed";
+        btn.style.bottom = "75px";
+        btn.style.right = "25px";
+        btn.style.zIndex = "9999";
+        btn.style.color = options.color;
+        btn.style.backgroundColor = options.bgColor;
+        btn.style.padding = "7px 14px";
+        btn.style.border = "none";
+        btn.style.borderRadius = "10px";
+        btn.style.opacity = "0.8";
+        btn.style.cursor = "pointer";
+        btn.style.display = "none";
+        document.body.appendChild(btn);
+
+        window.addEventListener("scroll", function () {
+            btn.style.display = window.scrollY > 200 ? "block" : "none";
+        });
+        btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    }
+
+    return { scroll };
 })();
 
-// // Expose the plugin to the global scope if needed
 window.Scrollxy = Scrollxy;
